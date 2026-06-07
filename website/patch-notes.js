@@ -209,6 +209,5 @@ export async function initPatchNotes() {
 
   root.appendChild(layout)
 
-  const latestVersion = newestFirst(releases)[0]?.version ?? null
-  select(latestVersion, null)
+  select(null, null)
 }

@@ -127,7 +127,8 @@ async function init() {
   if (year) year.textContent = String(new Date().getFullYear())
 
   initNav()
-  void initPatchNotes()
+  await initPatchNotes()
+  window.scrollTo(0, 0)
 
   try {
     const msi = await resolveLatestMsi()
