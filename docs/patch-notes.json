@@ -1,6 +1,46 @@
 {
   "releases": [
     {
+      "version": "1.5.0",
+      "date": "2026-06-07",
+      "title": "Enhanced search, smarter library, playback polish",
+      "branches": [
+        {
+          "topic": "Search",
+          "items": [
+            "Optional enhanced search in Settings — filter pills, top-result hero, responsive result grids",
+            "Search tab shows recent queries, recently played, and artists you listen to",
+            "Left-aligned browse header and dedicated search title bar",
+            "More reliable artwork in lists and cards"
+          ]
+        },
+        {
+          "topic": "Library & Home",
+          "items": [
+            "Import public YouTube playlists into your library",
+            "Smart playlists: save, preview, and empty states",
+            "Continue listening hero on Home",
+            "Stats: turn your top tracks into a playlist"
+          ]
+        },
+        {
+          "topic": "Playback",
+          "items": [
+            "Global media keys plus Ctrl shortcuts for volume, shuffle, and repeat",
+            "Playback error recovery — retry, lower quality, or clear stream cache",
+            "Discord Rich Presence keeps elapsed time when paused"
+          ]
+        },
+        {
+          "topic": "Updates",
+          "items": [
+            "Clearer in-app update error messages",
+            "Release checklist: npm run verify:release"
+          ]
+        }
+      ]
+    },
+    {
       "version": "1.4.0",
       "date": "2026-06-06",
       "title": "Discord presence, sharper art, and one-click updates",

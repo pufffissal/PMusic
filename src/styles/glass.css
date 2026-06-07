@@ -1,0 +1,139 @@
+/* Frosted glass surfaces — translucent fill, strong blur, crisp top highlight */
+
+.glass-sheen {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.02) 18%,
+      transparent 42%
+    ),
+    var(--glass-fill);
+}
+
+.glass {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.02) 24%,
+      transparent 50%
+    ),
+    var(--glass-fill);
+  backdrop-filter: blur(var(--blur-md)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(var(--glass-saturate));
+  border: 1px solid var(--border-glass);
+  border-top-color: var(--border-glass-top);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    var(--shadow-glass),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition:
+    border-color 0.2s var(--ease-out),
+    box-shadow 0.2s var(--ease-out),
+    background 0.2s var(--ease-out);
+}
+
+.glass-hover:hover {
+  border-color: var(--border-glass-strong);
+  border-top-color: rgba(255, 255, 255, 0.14);
+  box-shadow: var(--shadow-glass-hover);
+}
+
+.glass-sidebar {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 28%
+    ),
+    var(--glass-fill);
+  backdrop-filter: blur(var(--blur-md)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(var(--glass-saturate));
+  border-right: 1px solid var(--border-glass);
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.06);
+  contain: layout paint;
+}
+
+.glass-player {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 40%
+    ),
+    var(--glass-fill);
+  backdrop-filter: blur(var(--blur-lg)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(var(--glass-saturate));
+  border: 1px solid var(--border-glass);
+  border-top-color: var(--border-glass-top);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-titlebar {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.11) 0%,
+      rgba(255, 255, 255, 0.02) 24%,
+      transparent 52%
+    ),
+    var(--glass-fill);
+  backdrop-filter: blur(var(--blur-md)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(var(--glass-saturate));
+  border-bottom: 1px solid var(--border-glass);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-inset-subtle {
+  background: rgba(255, 255, 255, 0.025);
+  border-right: 1px solid var(--border-glass);
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+.glass-inset,
+.glass-panel {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.02) 20%,
+      transparent 46%
+    ),
+    var(--glass-fill);
+  backdrop-filter: blur(var(--blur-md)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(var(--glass-saturate));
+  border: 1px solid var(--border-glass);
+  border-top-color: var(--border-glass-top);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-glass);
+}
+
+.drag-region {
+  -webkit-app-region: drag;
+}
+
+.mini-player {
+  background:
+    linear-gradient(180deg, #242428 0%, #1a1a1e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+.interactive-scale {
+  transition: transform 0.2s var(--ease-spring);
+}
+
+.interactive-scale:active {
+  transform: scale(0.97);
+}
+
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  outline-offset: 2px;
+}
