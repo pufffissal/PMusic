@@ -13,7 +13,7 @@ import {
   Play,
   Pause,
 } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useAppStore } from '@/store/appStore'
 import { usePlayerStore } from '@/store/playerStore'
 import { useSettingsStore } from '@/store/settingsStore'
@@ -28,7 +28,9 @@ import { useMotion } from '@/hooks/useMotion'
 import { ProgressBar } from '@/components/player/ProgressBar'
 import { useFormattedDuration } from '@/hooks/useSearch'
 import { Appear, Stagger, StaggerItem } from '@/components/ui/motion'
+import { ArtworkImage } from '@/components/ui/ArtworkImage'
 import { EASE_OUT, fadeUp, nowPlayingVariants } from '@/lib/motion'
+import { resolveTrackThumbnail } from '@/lib/trackThumbnail'
 import { cn } from '@/lib/cn'
 
 type Tab = 'lyrics' | 'about' | 'upnext'
@@ -120,9 +122,15 @@ export function NowPlayingView({ onSeek, panelTransition = 0 }: NowPlayingViewPr
     setPlaying(true)
   }
 
-  const banner = currentTrack
+  const artworkSource = currentTrack
     ? (detailsMatchTrack && details?.thumbnail) || currentTrack.thumbnail
     : undefined
+
+  const banner = useMemo(() => {
+    if (!currentTrack || !artworkSource) return undefined
+    return resolveTrackThumbnail(currentTrack.id, artworkSource, 'large')
+  }, [currentTrack, artworkSource])
+
   useVibrant(banner)
   const artworkGlowStyle = useArtworkGlow(banner, showArtworkGlow)
 
@@ -200,15 +208,23 @@ export function NowPlayingView({ onSeek, panelTransition = 0 }: NowPlayingViewPr
                 )}
                 style={artworkGlowStyle}
               >
-                <motion.img
+                <motion.div
                   key={currentTrack.id}
                   initial={reduceMotion ? false : { scale: 0.92, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ ...spring, duration: 0.5 }}
-                  src={currentTrack.thumbnail}
-                  alt=""
-                  className="now-playing__artwork"
-                />
+                  className="now-playing__artwork-motion"
+                >
+                  <ArtworkImage
+                    videoId={currentTrack.id}
+                    thumbnail={artworkSource}
+                    alt=""
+                    priority="high"
+                    className="now-playing__artwork"
+                    fallbackClassName="now-playing__artwork"
+                    fallbackLetter={currentTrack.title.charAt(0) || '?'}
+                  />
+                </motion.div>
               </div>
             </section>
 

@@ -37,7 +37,7 @@ export function ArtworkImage({
   size,
 }: ArtworkImageProps) {
   const resolvedSize: ThumbnailSize =
-    size ?? (priority === 'low' ? 'small' : 'medium')
+    size ?? (priority === 'low' ? 'small' : priority === 'high' ? 'large' : 'medium')
 
   const imgRef = useRef<HTMLImageElement>(null)
   const [src, setSrc] = useState(() => resolveTrackThumbnail(videoId, thumbnail, resolvedSize))

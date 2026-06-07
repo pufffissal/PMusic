@@ -191,6 +191,10 @@
   aspect-ratio: 1;
 }
 
+.now-playing__artwork-motion {
+  width: 100%;
+}
+
 .now-playing__sync-badge {
   display: inline-flex;
   align-items: center;
